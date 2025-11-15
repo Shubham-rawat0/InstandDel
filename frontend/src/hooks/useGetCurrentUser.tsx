@@ -8,7 +8,7 @@ const useGetCurrentUser = () => {
     const dispatch=useDispatch()
     const {userData}=useSelector((state:RootState)=>state.user)
        const serverUrl =
-          import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+          import.meta.env.VITE_SERVER_URL ;
         if (!serverUrl) {
           throw new Error("no server url");
         }

@@ -79,6 +79,9 @@ function UserOrderCard({ data }: { data: UserMyOrder }) {
   const handelRating=async(itemId:string,rating:number)=>{
      try {
       const serverUrl = import.meta.env.VITE_SERVER_URL;
+      if (!serverUrl) {
+        throw new Error("no server url");
+      }
       const result=await axios.post(`${serverUrl}/api/item/rating`,{itemId,rating},{
        withCredentials:true
       })

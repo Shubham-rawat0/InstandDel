@@ -7,7 +7,7 @@ import type { RootState } from "../redux/store";
 const useGetItemsByCity = () => {
   const dispatch = useDispatch();
   const { currentCity } = useSelector((state: RootState) => state.user);
-  const serverUrl = import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+  const serverUrl = import.meta.env.VITE_SERVER_URL;
   if (!serverUrl) {
     throw new Error("no server url");
   }

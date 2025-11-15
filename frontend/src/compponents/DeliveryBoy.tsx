@@ -108,8 +108,7 @@ const DeliveryBoy = () => {
 
   const getAssignments=async()=>{
     try {
-       const serverUrl =
-         import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+       const serverUrl = import.meta.env.VITE_SERVER_URL;
        if (!serverUrl) {
          throw new Error("no server url");
        }
@@ -173,11 +172,10 @@ const DeliveryBoy = () => {
   const acceptOrder=async(assignmentId:string)=>{
     try {
 
-      const serverUrl =
-         import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-       if (!serverUrl) {
-         throw new Error("no server url");
-       }
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
+      if (!serverUrl) {
+        throw new Error("no server url");
+      }
       const result=await axios.get(`${serverUrl}/api/order/accept-order/${assignmentId}`,{
         withCredentials:true
       })
@@ -191,11 +189,10 @@ const DeliveryBoy = () => {
   const sendOtp=async()=>{
     try {
      
-      const serverUrl =
-         import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-       if (!serverUrl) {
-         throw new Error("no server url");
-       }
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
+      if (!serverUrl) {
+        throw new Error("no server url");
+      }
        setLoading(true)
        const orderId=currentOrder?._id,
        shopOrderId=currentOrder?.shopOrder._id
@@ -217,11 +214,10 @@ const DeliveryBoy = () => {
   const verifyOtp=async()=>{
     try {
       setMessage("")
-      const serverUrl =
-         import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-       if (!serverUrl) {
-         throw new Error("no server url");
-       }
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
+      if (!serverUrl) {
+        throw new Error("no server url");
+      }
        setLoading(true)
         const orderId = currentOrder?._id,       
           shopOrderId = currentOrder?.shopOrder._id;
@@ -240,11 +236,10 @@ const DeliveryBoy = () => {
 
   const handleTodayDeliveries=async()=>{
     try {
-      const serverUrl =
-         import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-       if (!serverUrl) {
-         throw new Error("no server url");
-       }
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
+      if (!serverUrl) {
+        throw new Error("no server url");
+      }
       const result=await axios.get(`${serverUrl}/api/order/get-today-deliveries`,{
         withCredentials:true
       })
@@ -257,11 +252,10 @@ const DeliveryBoy = () => {
 
   const getCurrentOrder=async()=>{
     try {
-      const serverUrl =
-        import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-      if (!serverUrl) {
-        throw new Error("no server url");
-      }
+     const serverUrl = import.meta.env.VITE_SERVER_URL;
+     if (!serverUrl) {
+       throw new Error("no server url");
+     }
       const result=await axios.get(`${serverUrl}/api/order/get-current-order`,{
         withCredentials:true
       })

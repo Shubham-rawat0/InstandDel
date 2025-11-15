@@ -6,7 +6,9 @@ import type { RootState } from "../redux/store";
 const useUpdateLocation = () => {
   const { userData } = useSelector((state: RootState) => state.user);
   const serverUrl = import.meta.env.VITE_SERVER_URL;
-
+  if (!serverUrl) {
+    throw new Error("no server url");
+  }
   const lastLatRef = useRef<number | null>(null);
   const lastLonRef = useRef<number | null>(null);
 

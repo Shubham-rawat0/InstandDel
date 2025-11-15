@@ -1,8 +1,7 @@
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setCurrentAddress, setCurrentCity, setCurrentState } from "../redux/userSlice";
 import axios from "axios";
-import type { RootState } from "../redux/store";
 import { setLocation,setAddress } from "../redux/mapSlice";
 
 const useGetCity = () => {

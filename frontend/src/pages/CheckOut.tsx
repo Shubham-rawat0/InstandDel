@@ -106,8 +106,10 @@ function CheckOut() {
 
   const fetchOrders = async () => {
     try {
-      const serverUrl =
-        import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
+      if (!serverUrl) {
+        throw new Error("no server url");
+      }
       const orders = await axios.get(`${serverUrl}/api/order/my-orders`, {
         withCredentials: true,
       });
@@ -126,12 +128,10 @@ function CheckOut() {
     if(!key_id){
       throw new Error("no rzp key")
     }
-    const serverUrl =
-      import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-
-    if (!serverUrl) {
-      throw new Error("no server url");
-    }
+   const serverUrl = import.meta.env.VITE_SERVER_URL;
+   if (!serverUrl) {
+     throw new Error("no server url");
+   }
     const options = {
       key: key_id,
       amount: razorOrder.amount,
@@ -166,8 +166,10 @@ function CheckOut() {
 
   const handlePlaceOrder = async () => {
     try {
-      const serverUrl =
-        import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+     const serverUrl = import.meta.env.VITE_SERVER_URL;
+     if (!serverUrl) {
+       throw new Error("no server url");
+     }
       setLoading(true);
       const result=await axios.post(
         `${serverUrl}/api/order/place-order`,

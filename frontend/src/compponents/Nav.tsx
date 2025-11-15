@@ -21,11 +21,10 @@ function Nav() {
 
     const handleSearchItems=async()=>{
       try {
-         const serverUrl =
-           import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-         if (!serverUrl) {
-           throw new Error("no server url");
-         }
+        const serverUrl = import.meta.env.VITE_SERVER_URL;
+        if (!serverUrl) {
+          throw new Error("no server url");
+        }
          const result=await axios.get(`${serverUrl}/api/item/search-items?query=${query}&city=${currentCity}`,{
           withCredentials:true
          })
@@ -36,8 +35,7 @@ function Nav() {
     }
 
   const handleLogout=async()=>{
-    const serverUrl =
-      import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+    const serverUrl = import.meta.env.VITE_SERVER_URL;
     if (!serverUrl) {
       throw new Error("no server url");
     }

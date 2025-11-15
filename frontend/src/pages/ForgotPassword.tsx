@@ -17,8 +17,7 @@ const ForgotPassword = () => {
       const handleSendOtp=async()=>{
         try {
            setLoading(true);
-          const serverUrl =
-            import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+          const serverUrl = import.meta.env.VITE_SERVER_URL;
           if (!serverUrl) {
             throw new Error("no server url");
           }
@@ -59,11 +58,10 @@ const ForgotPassword = () => {
       const handleVerifyOtp=async () => {
         try {
            setLoading(true);
-          const serverUrl =
-            import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-          if (!serverUrl) {
-            throw new Error("no server url");
-          }
+         const serverUrl = import.meta.env.VITE_SERVER_URL;
+         if (!serverUrl) {
+           throw new Error("no server url");
+         }
           const result = await axios.post(
             `${serverUrl}/api/auth/verify-otp`,
             {
@@ -96,11 +94,10 @@ const ForgotPassword = () => {
         }
         try {
            setLoading(true);
-          const serverUrl =
-            import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-          if (!serverUrl) {
-            throw new Error("no server url");
-          }
+         const serverUrl = import.meta.env.VITE_SERVER_URL;
+         if (!serverUrl) {
+           throw new Error("no server url");
+         }
           const result = await axios.post(
             `${serverUrl}/api/auth/reset-password`,
             {

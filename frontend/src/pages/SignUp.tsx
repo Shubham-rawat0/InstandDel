@@ -32,8 +32,7 @@ const SignUp = () => {
     const handleSignup=async()=>{
       try {
         setLoading(true)
-        const serverUrl =
-          import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+        const serverUrl = import.meta.env.VITE_SERVER_URL;
         if (!serverUrl) {
           throw new Error("no server url");
         }
@@ -92,8 +91,7 @@ const SignUp = () => {
         if (!mobile || !googleUser) {
           throw new Error("no mobile and google user");
         }
-        const serverUrl =
-          import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+        const serverUrl = import.meta.env.VITE_SERVER_URL;
         if (!serverUrl) {
           throw new Error("no server url");
         }

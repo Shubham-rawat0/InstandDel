@@ -63,9 +63,7 @@ function EditItem() {
       if (backendImage) {
         formData.append("image", backendImage);
       }
-      const serverUrl =
-        import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-     
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
       if (!serverUrl) {
         throw new Error("no server url");
       }
@@ -88,7 +86,7 @@ function EditItem() {
   useEffect(()=>{
     const handleGetItemById=async ()=>{
         try {
-             const serverUrl =import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+             const serverUrl = import.meta.env.VITE_SERVER_URL;
              if (!serverUrl) {
                throw new Error("no server url");
              }

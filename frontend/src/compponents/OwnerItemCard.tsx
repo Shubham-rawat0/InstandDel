@@ -21,11 +21,10 @@ if (data.image==null){
 }
 
    const handleDelete = async () => {
-     const serverUrl =
-       import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
-     if (!serverUrl) {
-       throw new Error("no server url");
-     }
+    const serverUrl = import.meta.env.VITE_SERVER_URL;
+    if (!serverUrl) {
+      throw new Error("no server url");
+    }
      try {
        const result = await axios.delete(`${serverUrl}/api/item/delete/${data._id}`, {
          withCredentials: true,

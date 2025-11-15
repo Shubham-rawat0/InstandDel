@@ -24,8 +24,7 @@ const SignIn = () => {
   const handleSignIn = async () => {
     try {
       setLoading(true);
-      const serverUrl =
-        import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
       if (!serverUrl) {
         throw new Error("no server url");
       }
@@ -71,8 +70,7 @@ const SignIn = () => {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
       console.log(result);
-      const serverUrl =
-        import.meta.env.VITE_SERVER_URL || "http://localhost:8000";
+      const serverUrl = import.meta.env.VITE_SERVER_URL;
       if (!serverUrl) {
         throw new Error("no server url");
       }
