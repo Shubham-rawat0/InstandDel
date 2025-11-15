@@ -7,7 +7,6 @@ import { setLocation,setAddress } from "../redux/mapSlice";
 
 const useGetCity = () => {
   const dispatch = useDispatch();
-  const {userData}=useSelector((state:RootState)=>state.user)
   const apikey = import.meta.env.VITE_GEOAPIKEY;
   if (!apikey) {
     throw new Error("no geoapi key");
