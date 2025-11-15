@@ -1,0 +1,21 @@
+import { Request } from "express";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
+
+const uploadPath = path.join(process.cwd(), "public");
+
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (req: Request, file: Express.Multer.File, cb) => {
+    cb(null, uploadPath);
+  },
+  filename: (req: Request, file: Express.Multer.File, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+export const upload = multer({ storage });

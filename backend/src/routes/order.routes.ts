@@ -1,0 +1,19 @@
+import express from "express";
+import isAuth from "../middlewares/isAuth.js";
+import { acceptOrder, getCurrentOrder, getDeliveryBoyAssignment, getMyOrder, getOrderById, getTodayDelivery, placeOrder, sendDeliveryOtp, updateOrderStatus, verifyDeliveryOtp, verifyPayment } from "../controllers/order.controllers.js";
+
+const router = express.Router();
+
+router.post("/place-order",isAuth,placeOrder)
+router.get("/my-orders",isAuth,getMyOrder)
+router.get("/get-assignments",isAuth,getDeliveryBoyAssignment)
+router.get("/accept-order/:assignmentId",isAuth,acceptOrder)
+router.get("/get-today-deliveries",isAuth,getTodayDelivery)
+router.get("/get-current-order", isAuth, getCurrentOrder);
+router.get("/get-order-by-id/:orderId", isAuth, getOrderById);
+router.post("/update-status/:orderId/:shopId",isAuth,updateOrderStatus)
+router.post("/send-delivery-otp",isAuth,sendDeliveryOtp)
+router.post("/verify-delivery-otp",isAuth,verifyDeliveryOtp)
+router.post("/verify-payment",isAuth,verifyPayment)
+
+export default router;

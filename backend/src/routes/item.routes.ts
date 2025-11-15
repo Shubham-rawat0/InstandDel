@@ -1,0 +1,16 @@
+import express from "express";
+import isAuth from "../middlewares/isAuth.js";
+import { addItem, deleteItem, editItem, getItemById, getItemsByCity, getItemsByShop, rating, searchItems } from "../controllers/item.controller.js";
+import { upload } from "../middlewares/multer.js";
+
+const router = express.Router();
+router.post("/add-item",isAuth,upload.single("image"),addItem);
+router.post("/edit-item/:itemId", isAuth, upload.single("image"), editItem);
+router.get("/get-by-id/:itemId",isAuth,getItemById);
+router.get("/get-by-shop/:shopId",isAuth,getItemsByShop);
+router.get("/get-by-city/:city", isAuth, getItemsByCity);
+router.get("/search-items", isAuth, searchItems);
+router.post("/rating", isAuth, rating);
+router.delete("/delete/:itemId",isAuth,deleteItem);
+
+export default router;
