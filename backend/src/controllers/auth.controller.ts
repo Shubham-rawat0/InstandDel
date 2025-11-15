@@ -26,12 +26,13 @@ export const signUp=async(req:any,res:any)=>{
 
         const token=getToken(user._id.toString())
 
-        res.cookie("token",token,{
-            secure:false,
-            sameSite:"strict",
-            maxAge:7*24*60*60*1000,
-            httpOnly:true
-        })
+       res.cookie("token", token, {
+         secure: true, // MUST be true on Render (HTTPS)
+         sameSite: "none", // REQUIRED for cross-domain cookies
+         httpOnly: true,
+         maxAge: 7 * 24 * 60 * 60 * 1000,
+       });
+
         await sendWelcomeMail(email)
         return res.status(201).json(user,{message:"user created successfully"})
     } catch (error) {
@@ -59,12 +60,13 @@ export const signIn=async(req:any,res:any)=>{
 
         const token=getToken(user._id.toString())
 
-        res.cookie("token",token,{
-            secure:false,
-            sameSite:"strict",
-            maxAge:7*24*60*60*1000,
-            httpOnly:true
-        })
+       res.cookie("token", token, {
+         secure: true, // MUST be true on Render (HTTPS)
+         sameSite: "none", // REQUIRED for cross-domain cookies
+         httpOnly: true,
+         maxAge: 7 * 24 * 60 * 60 * 1000,
+       });
+
         return res
           .status(201)
           .json(user, { message: "user logged in successfully" });
@@ -188,11 +190,12 @@ export const googleAuth=async(req:Request,res:Response)=>{
         const token = getToken(user._id.toString());
 
         res.cookie("token", token, {
-          secure: false,
-          sameSite: "strict",
-          maxAge: 7 * 24 * 60 * 60 * 1000,
+          secure: true, // MUST be true on Render (HTTPS)
+          sameSite: "none", // REQUIRED for cross-domain cookies
           httpOnly: true,
+          maxAge: 7 * 24 * 60 * 60 * 1000,
         });
+
         
         return res
           .status(201)

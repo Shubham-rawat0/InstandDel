@@ -28,7 +28,7 @@ const SignIn = () => {
       if (!serverUrl) {
         throw new Error("no server url");
       }
-      console.log(serverUrl);
+      console.log("server",serverUrl);
       const result = await axios.post(
         `${serverUrl}/api/auth/signin`,
         {
@@ -71,6 +71,7 @@ const SignIn = () => {
       const result = await signInWithPopup(auth, provider);
       console.log(result);
       const serverUrl = import.meta.env.VITE_SERVER_URL;
+      
       if (!serverUrl) {
         throw new Error("no server url");
       }
